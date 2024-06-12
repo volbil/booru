@@ -1,0 +1,48 @@
+{% extends "layout/base.html" %}
+
+{% block content %}
+
+<form id="upload-form" action="/upload" method="post" enctype="multipart/form-data">
+    <div class="mb-3">
+        <input
+            class="form-control"
+            type="file"
+            id="upload-file"
+            name="upload-file"
+            accept="image/png, image/jpeg">
+    </div>
+
+    <div class="align-items-stretch">
+        <button type="button" class="btn btn-primary btn-sm w-100">Upload</button>
+    </div>
+</form>
+
+<div class="mt-3">
+    <img id="preview" class="w-100"/>
+</div>
+
+<script>
+    function update_preview(file_input, preview) {
+        const [file] = file_input.files
+        if (file) {
+            preview.src = URL.createObjectURL(file)
+        }
+    }
+
+    const form = document.getElementById("upload-form");
+    const file_input = document.getElementById("upload-file")
+    const preview = document.getElementById("preview")
+
+    form.reset()
+
+    window.addEventListener("paste", e => {
+        file_input.files = e.clipboardData.files
+        update_preview(file_input, preview)
+    })
+
+    file_input.onchange = evt => {
+        update_preview(file_input, preview)
+    }
+</script>
+
+{% endblock %}

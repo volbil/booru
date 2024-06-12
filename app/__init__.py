@@ -49,8 +49,10 @@ def create_app(init_db: bool = True) -> FastAPI:
             if sessionmanager._engine is not None:
                 await sessionmanager.close()
 
+    from .upload import router as upload_router
     from .home import router as home_router
 
+    app.include_router(upload_router)
     app.include_router(home_router)
 
     @app.get("/ping")

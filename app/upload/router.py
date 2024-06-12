@@ -5,10 +5,10 @@ from app import templates
 router = APIRouter()
 
 
-@router.get("/")
-async def home(request: Request):
+@router.get("/upload")
+async def upload(request: Request):
     return templates.TemplateResponse(
-        "pages/home.html",
+        "pages/upload.html",
         {
             "request": request,
         },
