@@ -23,9 +23,14 @@ class Image(Base):
 
     tags: Mapped[list["Tag"]] = relationship(
         secondary=tag_image_association_table,
+        order_by="Tag.name.asc()",
         back_populates="images",
     )
 
     @hybrid_property
     def url(self):
         return "/uploads" + self.path
+
+    @hybrid_property
+    def tags_str(self):
+        return " ".join([tag.name for tag in self.tags])

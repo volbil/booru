@@ -4,7 +4,12 @@
 
 <div class="row">
     <div class="col-3">
-        <button class="btn btn-sm btn-danger w-100" hx-post="/image/{{ image.id }}/trash">Trash</button>
+        <a class="btn btn-sm btn-primary w-100 mb-3" href="/image/{{ image.id }}/edit">
+            Edit
+        </a>
+        <button class="btn btn-sm btn-danger w-100" hx-post="/image/{{ image.id }}/trash">
+            Trash
+        </button>
     </div>
     <div class="col-9">
         <img src="{{ image.url }}" class="w-100"/>

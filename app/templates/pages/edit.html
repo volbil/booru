@@ -1,0 +1,50 @@
+{% extends "layout/base.html" %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-md-3 col-sm-12">
+        <form id="upload-form" class="mb-3" action="/image/{{ image.id }}/update" method="post" enctype="multipart/form-data">
+            <div class="mb-3">
+                <input
+                    type="text"
+                    class="form-control"
+                    id="source"
+                    name="description"
+                    value="{{ image.description if image.description }}"
+                    placeholder="Description">
+            </div>
+
+            <div class="mb-3">
+                <input
+                    type="text"
+                    class="form-control"
+                    id="source"
+                    name="source"
+                    value="{{ image.source if image.source }}"
+                    placeholder="Source">
+            </div>
+
+            <div class="mb-3">
+                <textarea
+                    class="form-control"
+                    id="tags"
+                    name="tags"
+                    placeholder="Tags"
+                    rows="3">{{ image.tags_str }}</textarea>
+            </div>
+
+            <div class="align-items-stretch">
+                <button class="btn btn-primary btn-sm w-100" type="submit">Update</button>
+            </div>
+        </form>
+    </div>
+
+    <div class="col-md-9 col-sm-12">
+        <div class="text-center">
+            <img id="preview" src="{{ image.url }}" class="w-100"/>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

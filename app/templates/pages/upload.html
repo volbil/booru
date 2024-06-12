@@ -3,7 +3,7 @@
 {% block content %}
 
 <div class="row">
-    <div class="col-md-4 col-sm-12">
+    <div class="col-md-3 col-sm-12">
         <form id="upload-form" class="mb-3" action="/upload" method="post" enctype="multipart/form-data">
             <div class="mb-3">
                 <input
@@ -15,11 +15,21 @@
             </div>
 
             <div class="mb-3">
-                <input type="text" class="form-control" id="source" name="description", placeholder="Description">
+                <input
+                    type="text"
+                    class="form-control"
+                    id="description"
+                    name="description"
+                    placeholder="Description">
             </div>
 
             <div class="mb-3">
-                <input type="text" class="form-control" id="source" name="source", placeholder="Source">
+                <input
+                    type="text"
+                    class="form-control"
+                    id="source"
+                    name="source"
+                    placeholder="Source">
             </div>
 
             <div class="mb-3">
@@ -32,7 +42,7 @@
         </form>
     </div>
 
-    <div class="col-md-8 col-sm-12">
+    <div class="col-md-9 col-sm-12">
         <div class="text-center">
             <img id="preview" class="w-100"/>
         </div>
@@ -51,7 +61,8 @@
     var file_input = document.getElementById("file")
     var preview = document.getElementById("preview")
 
-    form.reset()
+    // TODO: Do we need to reset form?
+    // form.reset()
 
     window.addEventListener("paste", e => {
         var file = e.clipboardData.files[0]
