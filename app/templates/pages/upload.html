@@ -7,13 +7,25 @@
         <input
             class="form-control"
             type="file"
-            id="upload-file"
-            name="upload-file"
+            id="file"
+            name="file"
             accept="image/png, image/jpeg">
     </div>
 
+    <div class="mb-3">
+        <input type="text" class="form-control" id="source" name="description", placeholder="Description">
+    </div>
+
+    <div class="mb-3">
+        <input type="text" class="form-control" id="source" name="source", placeholder="Source">
+    </div>
+
+    <div class="mb-3">
+        <textarea class="form-control" id="tags" name="tags" placeholder="Tags" rows="3"></textarea>
+    </div>
+
     <div class="align-items-stretch">
-        <button type="button" class="btn btn-primary btn-sm w-100">Upload</button>
+        <button class="btn btn-primary btn-sm w-100" type="submit">Upload</button>
     </div>
 </form>
 
@@ -30,7 +42,7 @@
     }
 
     const form = document.getElementById("upload-form");
-    const file_input = document.getElementById("upload-file")
+    const file_input = document.getElementById("file")
     const preview = document.getElementById("preview")
 
     form.reset()

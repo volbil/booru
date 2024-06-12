@@ -26,6 +26,12 @@ def create_app(init_db: bool = True) -> FastAPI:
         name="static",
     )
 
+    app.mount(
+        "/uploads",
+        StaticFiles(directory=settings.backend.uploads),
+        name="uploads",
+    )
+
     # Hot reload for Jinja templates
     if settings.backend.debug:
         hot_reload = arel.HotReload(paths=[arel.Path("./app/templates/")])

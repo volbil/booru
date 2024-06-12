@@ -4,6 +4,12 @@ from dynaconf import Dynaconf
 from datetime import timezone
 import secrets
 import bcrypt
+import re
+
+
+# Function to check whether tag is valid
+def is_valid_tag_name(name):
+    return re.match(r"^[a-zA-Z0-9_]+$", name) is not None
 
 
 # Replacement for deprecated datetime's utcnow

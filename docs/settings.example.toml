@@ -3,4 +3,5 @@
     endpoint = "postgresql+asyncpg://dev:password@localhost:5432/booru"
 
     [default.backend]
+    uploads = "/tmp/booru"
     debug = true
