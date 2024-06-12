@@ -58,11 +58,13 @@ async def process_upload(
     extension = file.content_type.split("/")[-1]
     name = str(uuid4())
 
-    path = f"{settings.backend.uploads}/{path_now}/{name}.{extension}"
+    path = f"/{path_now}/{name}.{extension}"
 
-    await create_folders(path)
+    save_path = f"{settings.backend.uploads}/{path}"
 
-    async with aiofiles.open(path, "wb") as f:
+    await create_folders(save_path)
+
+    async with aiofiles.open(save_path, "wb") as f:
         await f.write(file.file.read())
 
     image = Image(

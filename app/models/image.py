@@ -1,4 +1,5 @@
 from .association import tag_image_association_table
+from sqlalchemy.ext.hybrid import hybrid_property
 from sqlalchemy.dialects.postgresql import JSONB
 from sqlalchemy.orm import mapped_column
 from sqlalchemy.orm import relationship
@@ -23,3 +24,7 @@ class Image(Base):
         secondary=tag_image_association_table,
         back_populates="images",
     )
+
+    @hybrid_property
+    def url(self):
+        return "/uploads" + self.path

@@ -56,9 +56,11 @@ def create_app(init_db: bool = True) -> FastAPI:
                 await sessionmanager.close()
 
     from .upload import router as upload_router
+    from .image import router as image_router
     from .home import router as home_router
 
     app.include_router(upload_router)
+    app.include_router(image_router)
     app.include_router(home_router)
 
     @app.get("/ping")
