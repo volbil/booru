@@ -2,35 +2,41 @@
 
 {% block content %}
 
-<form id="upload-form" action="/upload" method="post" enctype="multipart/form-data">
-    <div class="mb-3">
-        <input
-            class="form-control"
-            type="file"
-            id="file"
-            name="file"
-            accept="image/png, image/jpeg">
+<div class="row">
+    <div class="col-md-4 col-sm-12">
+        <form id="upload-form" class="mb-3" action="/upload" method="post" enctype="multipart/form-data">
+            <div class="mb-3">
+                <input
+                    class="form-control"
+                    type="file"
+                    id="file"
+                    name="file"
+                    accept="image/png, image/jpeg">
+            </div>
+
+            <div class="mb-3">
+                <input type="text" class="form-control" id="source" name="description", placeholder="Description">
+            </div>
+
+            <div class="mb-3">
+                <input type="text" class="form-control" id="source" name="source", placeholder="Source">
+            </div>
+
+            <div class="mb-3">
+                <textarea class="form-control" id="tags" name="tags" placeholder="Tags" rows="3"></textarea>
+            </div>
+
+            <div class="align-items-stretch">
+                <button class="btn btn-primary btn-sm w-100" type="submit">Upload</button>
+            </div>
+        </form>
     </div>
 
-    <div class="mb-3">
-        <input type="text" class="form-control" id="source" name="description", placeholder="Description">
+    <div class="col-md-8 col-sm-12">
+        <div class="text-center">
+            <img id="preview" class="w-100"/>
+        </div>
     </div>
-
-    <div class="mb-3">
-        <input type="text" class="form-control" id="source" name="source", placeholder="Source">
-    </div>
-
-    <div class="mb-3">
-        <textarea class="form-control" id="tags" name="tags" placeholder="Tags" rows="3"></textarea>
-    </div>
-
-    <div class="align-items-stretch">
-        <button class="btn btn-primary btn-sm w-100" type="submit">Upload</button>
-    </div>
-</form>
-
-<div class="mt-3">
-    <img id="preview" class="w-100"/>
 </div>
 
 <script>
@@ -48,8 +54,14 @@
     form.reset()
 
     window.addEventListener("paste", e => {
-        file_input.files = e.clipboardData.files
-        update_preview(file_input, preview)
+        const file = e.clipboardData.files[0]
+        if (file.type.startsWith("image/")) {
+            const dataTransfer = new DataTransfer();
+            dataTransfer.items.add(e.clipboardData.files[0])
+            file_input.files = dataTransfer.files;
+        
+            update_preview(file_input, preview)
+        }
     })
 
     file_input.onchange = evt => {
