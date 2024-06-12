@@ -17,6 +17,7 @@ class Image(Base):
     description: Mapped[str] = mapped_column(nullable=True)
     meta: Mapped[list] = mapped_column(JSONB, default={})
     source: Mapped[str] = mapped_column(nullable=True)
+    trash: Mapped[bool] = mapped_column(default=False)
     created: Mapped[datetime]
     updated: Mapped[datetime]
 

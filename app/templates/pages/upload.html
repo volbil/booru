@@ -41,22 +41,22 @@
 
 <script>
     function update_preview(file_input, preview) {
-        const [file] = file_input.files
+        var [file] = file_input.files
         if (file) {
             preview.src = URL.createObjectURL(file)
         }
     }
 
-    const form = document.getElementById("upload-form");
-    const file_input = document.getElementById("file")
-    const preview = document.getElementById("preview")
+    var form = document.getElementById("upload-form");
+    var file_input = document.getElementById("file")
+    var preview = document.getElementById("preview")
 
     form.reset()
 
     window.addEventListener("paste", e => {
-        const file = e.clipboardData.files[0]
+        var file = e.clipboardData.files[0]
         if (file.type.startsWith("image/")) {
-            const dataTransfer = new DataTransfer();
+            var dataTransfer = new DataTransfer();
             dataTransfer.items.add(e.clipboardData.files[0])
             file_input.files = dataTransfer.files;
         

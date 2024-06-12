@@ -3,14 +3,18 @@
 {% block content %}
 
 <div class="row">
-    <div class="col-2">1</div>
-    <div class="col-10">
+    <div class="col-3">
+        <div class="mb-3">
+            <input type="text" class="form-control" id="search" name="search", placeholder="Search...">
+        </div>
+    </div>
+    <div class="col-9">
         <div class="container">
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3">
                 {% for image in images %}
                 <div class="col text-center">
                     <a href="/image/{{ image.id }}">
-                        <img src="{{ image.url }}" style="height: 180px;">
+                        <img src="{{ image.url }}" style="height: 280px;">
                     </a>
                 </div>
                 {% endfor %}
