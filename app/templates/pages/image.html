@@ -10,11 +10,12 @@
 
         <hr class="mb-3">
 
+        {% if tags|length > 0 %}
         <div class="mb-3">
             <span class="mb-1 d-block">
                 <strong>Tags</strong>
             </span>
-            {% for tag in image.tags %}
+            {% for tag in tags %}
             <span>
                 <a href="#" class="mb-1">{{ tag.name }}</a>
             </span>
@@ -22,6 +23,7 @@
         </div>
 
         <hr class="mb-3">
+        {% endif %}
 
         {% if image.source or image.description %}
         <div class="mb-3">

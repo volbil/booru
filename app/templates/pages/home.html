@@ -7,6 +7,19 @@
         <div class="mb-3">
             <input type="text" class="form-control" id="search" name="search", placeholder="Search...">
         </div>
+
+        <hr class="mb-3">
+
+        <div class="mb-3">
+            <span class="mb-1 d-block">
+                <strong>Tags</strong>
+            </span>
+            {% for tag in tags %}
+            <span>
+                <a href="#" class="mb-1">{{ tag.name }}</a>
+            </span>
+            {% endfor %}
+        </div>
     </div>
     <div class="col-9">
         <div class="container">

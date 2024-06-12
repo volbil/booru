@@ -18,12 +18,18 @@ async def image_page(
     session: AsyncSession = Depends(get_session),
 ):
     image = await service.get_image(session, image_id)
+    tags = []
+
+    for tag in image.tags:
+        if tag not in tags:
+            tags.append(tag)
 
     return templates.TemplateResponse(
         "pages/image.html",
         {
             "request": request,
             "image": image,
+            "tags": tags,
         },
     )
 
