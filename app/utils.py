@@ -1,3 +1,5 @@
+from fastapi.responses import RedirectResponse
+from fastapi import Request, Response
 from datetime import datetime, UTC
 from functools import lru_cache
 from dynaconf import Dynaconf
@@ -5,6 +7,17 @@ from datetime import timezone
 import secrets
 import bcrypt
 import re
+
+
+# FastAPI redirect
+def redirect(request: Request, redirect_path: str):
+    response = RedirectResponse(redirect_path)
+
+    if "hx-request" in request.headers:
+        response = Response("OK")
+        response.headers["HX-Location"] = redirect_path
+
+    return response
 
 
 # Function to check whether tag is valid
