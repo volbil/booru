@@ -33,6 +33,8 @@ class DatabaseSessionManager:
         self._sessionmaker = None
         self._engine = None
 
+        print("\n\nHUI\n\n")
+
     @contextlib.asynccontextmanager
     async def connect(self) -> AsyncIterator[AsyncConnection]:
         if self._engine is None:

@@ -160,6 +160,21 @@ test = ["anyio[trio]", "coverage[toml] (>=7)", "exceptiongroup (>=1.2.0)", "hypo
 trio = ["trio (>=0.23)"]
 
 [[package]]
+name = "arel"
+version = "0.3.0"
+description = "Browser hot reload for Python ASGI web apps"
+optional = false
+python-versions = ">=3.7"
+files = [
+    {file = "arel-0.3.0-py3-none-any.whl", hash = "sha256:0edca29af00dc0610d0ac7880bcc48464ac551f7228724f1191035445854996a"},
+    {file = "arel-0.3.0.tar.gz", hash = "sha256:c424710c6abfafedadf1ee275ffd049d0e8840bfeb2bdcdbbde762e7eb448011"},
+]
+
+[package.dependencies]
+starlette = "==0.*"
+watchfiles = "==0.*"
+
+[[package]]
 name = "async-timeout"
 version = "4.0.3"
 description = "Timeout context manager for asyncio programs"
@@ -1820,4 +1835,4 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "9481c486fa4a41177684eed9ae8443b5bb30d9ae59e83a3c14283718954c5204"
+content-hash = "3d42ee4b1018bba8a8cf8bf07b41d0de9713095134df55c2afe92cea512c2a0a"

@@ -6,9 +6,9 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 		<title>Booru</title>
-        
+
         <link href="/static/bootstrap.min.css" rel="stylesheet">
-		<script src="/static/alpinejs.min.js"></script>
+		<script src="/static/alpinejs.min.js" defer></script>
 		<script src="/static/htmx.min.js"></script>
 	</head>
 
@@ -18,5 +18,7 @@
 		<main class="container mt-4 mb-4">
 			{% block content %}{% endblock %}
 		</main>
+
+		{% if DEBUG %} {{ hot_reload.script(url_for('hot-reload')) | safe }} {% endif %}
 	</body>
 </html>
