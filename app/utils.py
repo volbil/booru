@@ -6,6 +6,7 @@ from dynaconf import Dynaconf
 from datetime import timezone
 import secrets
 import bcrypt
+import math
 import re
 
 
@@ -84,5 +85,21 @@ def to_timestamp(date: datetime | None) -> int | None:
 # Helper function for pagination
 def pagination(page, size=50):
     offset = (size * (page)) - size
-
     return size, offset
+
+
+def frontend_pagination(page, items, count, path):
+    total = math.ceil(count / items)
+    pagination = range(page - 3, page + 4)
+    pagination = [item for item in pagination if item >= 1 and item <= total]
+    previous_page = page - 1 if page != 1 else None
+    next_page = page + 1 if page != total else None
+
+    return {
+        "previous": previous_page,
+        "pages": pagination,
+        "next": next_page,
+        "current": page,
+        "total": total,
+        "path": path,
+    }
